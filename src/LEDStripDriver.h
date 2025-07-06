@@ -4,40 +4,28 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
-template<uint16_t DATA_PIN, uint16_t NUM_PIXELS, uint16_t BRIGHTNESS, uint32_t UPDATE_INTERVAL>
 class LEDStripDriver {
 public:
-    LEDStripDriver() : _isOn(false) {
-        _leds = new CRGB[NUM_PIXELS];
-    }
+    LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval);
 
-    void init() {
-        FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, NUM_PIXELS);
-        FastLED.setBrightness(BRIGHTNESS);
-
-        for (int i = 0; i < NUM_PIXELS; i++) {
-            _leds[i] = CRGB::Black;
-        }
-
-        FastLED.show();
-    }
-
+    void init();
     void on();
     void off();
-    void toggle() {
-        _isOn ? off() : on();
-    }
+    void toggle();
     void fill();
     bool getPowerState();
     void update();
+
 private:
     CRGB* _leds;
     bool _isOn;
 
-    CRGB _parseColor(String hexColor) {
-        long number = strtol(color.c_str(), NULL, 16);
-        return CRGB((number >> 16) & 0xFF, (number >> 8) & 0xFF, number & 0xFF);
-    }
+    uint8_t _dataPin;
+    uint16_t _numPixels;
+    uint8_t _brightness;
+    uint32_t _updateInterval;
+
+    CRGB _parseColor(String hexColor);
 };
 
 #endif
