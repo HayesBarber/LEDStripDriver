@@ -24,7 +24,9 @@ public:
 
     void on();
     void off();
-    void toggle();
+    void toggle() {
+        _isOn ? off() : on();
+    }
     void fill();
     bool getPowerState();
     void update();
