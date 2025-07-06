@@ -33,6 +33,11 @@ public:
 private:
     CRGB* _leds;
     bool _isOn;
+
+    CRGB _parseColor(String hexColor) {
+        long number = strtol(color.c_str(), NULL, 16);
+        return CRGB((number >> 16) & 0xFF, (number >> 8) & 0xFF, number & 0xFF);
+    }
 };
 
 #endif
