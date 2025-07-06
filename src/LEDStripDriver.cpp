@@ -13,11 +13,24 @@ void LEDStripDriver::toggle() {
     _isOn ? off() : on();
 }
 
-bool LEDStripDriver::getPowerState() {
-    return _isOn;
+void LEDStripDriver::on() {
+    fill("FF0000");
 }
 
-CRGB LEDStripDriver::_parseColor(String hexColor) {
-    long number = strtol(hexColor.c_str(), NULL, 16);
-    return CRGB((number >> 16) & 0xFF, (number >> 8) & 0xFF, number & 0xFF);
+void LEDStripDriver::off() {
+    fill("000000");
+}
+
+void LEDStripDriver::fill(String colors) {
+    bool turningOn = (colors != "000000");
+    _isOn = turningOn;
+    _fillJob.begin(colors, _numPixels);
+}
+
+void LEDStripDriver::update() {
+    _fillJob.applyStep(_leds);
+}
+
+bool LEDStripDriver::getPowerState() {
+    return _isOn;
 }

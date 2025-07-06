@@ -11,7 +11,6 @@ public:
 
     void begin(String colorString, uint16_t numPixels);
     void applyStep(CRGB* leds);
-    bool isActive() const;
 
 private:
     CRGB* _colors;

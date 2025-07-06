@@ -62,10 +62,6 @@ void FillJob::applyStep(CRGB* leds) {
     _lastUpdate = millis();
 }
 
-bool FillJob::isActive() const {
-    return _inProgress;
-}
-
 CRGB FillJob::_parseColor(const String& hex) {
     long val = strtol(hex.c_str(), NULL, 16);
     return CRGB((val >> 16) & 0xFF, (val >> 8) & 0xFF, val & 0xFF);
