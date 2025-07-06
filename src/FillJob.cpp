@@ -37,7 +37,7 @@ void FillJob::begin(String colorString, uint16_t numPixels) {
         }
     }
     if (!current.isEmpty()) {
-        _colors[index++] = _parseColor(current);
+        _colors[index] = _parseColor(current);
     }
 
     _pixelsPerColor = _numPixels / _numColors;
