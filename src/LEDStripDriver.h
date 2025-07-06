@@ -27,6 +27,7 @@ public:
     void fill(String colors);
     bool getPowerState();
     void update();
+    String getCurrentColors() const;
 
 private:
     CRGB* _leds;

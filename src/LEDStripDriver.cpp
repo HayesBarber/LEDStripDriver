@@ -46,3 +46,7 @@ void LEDStripDriver::update() {
 bool LEDStripDriver::getPowerState() {
     return _isOn;
 }
+
+String LEDStripDriver::getCurrentColors() const {
+    return _isOn ? _lastColors : "000000";
+}
