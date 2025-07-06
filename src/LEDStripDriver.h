@@ -4,6 +4,8 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
+#define DATA_PIN 13
+
 class LEDStripDriver {
 public:
     LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval);

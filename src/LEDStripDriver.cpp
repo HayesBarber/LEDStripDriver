@@ -10,7 +10,7 @@ LEDStripDriver::LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t 
 }
 
 void LEDStripDriver::init() {
-    FastLED.addLeds<NEOPIXEL, 13>(_leds, _numPixels);
+    FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, _numPixels);
     FastLED.setBrightness(_brightness);
 
     for (int i = 0; i < _numPixels; i++) {
