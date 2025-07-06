@@ -4,13 +4,22 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
-#define DATA_PIN 13
-
 class LEDStripDriver {
 public:
     LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval);
 
-    void init();
+    template<uint8_t DATA_PIN>
+    void LEDStripDriver::init() {
+        FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, _numPixels);
+        FastLED.setBrightness(_brightness);
+
+        for (int i = 0; i < _numPixels; i++) {
+            _leds[i] = CRGB::Black;
+        }
+
+        FastLED.show();
+    }
+
     void on();
     void off();
     void toggle();
