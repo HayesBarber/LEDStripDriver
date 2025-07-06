@@ -24,6 +24,10 @@ void LEDStripDriver::toggle() {
     _isOn ? off() : on();
 }
 
+bool LEDStripDriver::getPowerState() {
+    return _isOn;
+}
+
 CRGB LEDStripDriver::_parseColor(String hexColor) {
     long number = strtol(hexColor.c_str(), NULL, 16);
     return CRGB((number >> 16) & 0xFF, (number >> 8) & 0xFF, number & 0xFF);
