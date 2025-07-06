@@ -11,7 +11,17 @@ public:
         _leds = new CRGB[NUM_PIXELS];
     }
 
-    void init();
+    void init() {
+        FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, NUM_PIXELS);
+        FastLED.setBrightness(BRIGHTNESS);
+
+        for (int i = 0; i < NUM_PIXELS; i++) {
+            _leds[i] = CRGB::Black;
+        }
+
+        FastLED.show();
+    }
+
     void on();
     void off();
     void toggle();
