@@ -40,7 +40,7 @@ void LEDStripDriver::fill(String colors) {
 }
 
 void LEDStripDriver::update() {
-    _fillJob.applyStep(_leds);
+    _fillJob.applyStep(_leds, _updateInterval);
 }
 
 bool LEDStripDriver::getPowerState() {

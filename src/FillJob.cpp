@@ -43,9 +43,9 @@ void FillJob::begin(String colorString, uint16_t numPixels) {
     _pixelsPerColor = _numPixels / _numColors;
 }
 
-void FillJob::applyStep(CRGB* leds) {
+void FillJob::applyStep(CRGB* leds, uint32_t updateInterval) {
     if (!_inProgress) return;
-    if (millis() - _lastUpdate < 20) return;
+    if (millis() - _lastUpdate < updateInterval) return;
 
     leds[_currentPixel] = _colors[_currentColorIdx];
     FastLED.show();

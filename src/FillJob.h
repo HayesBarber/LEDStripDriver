@@ -10,7 +10,7 @@ public:
     ~FillJob();
 
     void begin(String colorString, uint16_t numPixels);
-    void applyStep(CRGB* leds);
+    void applyStep(CRGB* leds, uint32_t updateInterval);
 
 private:
     CRGB* _colors;
