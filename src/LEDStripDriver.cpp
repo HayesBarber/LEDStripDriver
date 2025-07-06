@@ -1,7 +1,11 @@
 #include "LEDStripDriver.h"
 
 LEDStripDriver::LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval)
-    : _numPixels(numPixels), _brightness(brightness), _updateInterval(updateInterval), _isOn(false) {
+    : _numPixels(numPixels),
+      _brightness(brightness),
+      _updateInterval(updateInterval),
+      _isOn(false)
+{
     _leds = new CRGB[_numPixels];
 }
 
