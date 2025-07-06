@@ -7,6 +7,18 @@
 class LEDStripDriver {
 public:
     LEDStripDriver();
+
+    void init();
+    void on();
+    void off();
+    void toggle();
+    void fill();
+    bool getPowerState();
+    void update();
+private:
+    CRGB* _leds;
+    bool _isOn;
+    unsigned long _updateInterval;
 };
 
 #endif
