@@ -4,7 +4,8 @@ LEDStripDriver::LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t 
     : _numPixels(numPixels),
       _brightness(brightness),
       _updateInterval(updateInterval),
-      _isOn(false)
+      _isOn(false),
+      _lastColors("")
 {
     _leds = new CRGB[_numPixels];
 }
@@ -14,7 +15,11 @@ void LEDStripDriver::toggle() {
 }
 
 void LEDStripDriver::on() {
-    fill("FF0000");
+    if (_lastColors.isEmpty()) {
+        fill("FF0000");
+    } else {
+        fill(_lastColors);
+    }
 }
 
 void LEDStripDriver::off() {
@@ -22,8 +27,15 @@ void LEDStripDriver::off() {
 }
 
 void LEDStripDriver::fill(String colors) {
+    if (colors.isEmpty()) return;
+
     bool turningOn = (colors != "000000");
     _isOn = turningOn;
+
+    if (turningOn) {
+        _lastColors = colors;
+    }
+
     _fillJob.begin(colors, _numPixels);
 }
 

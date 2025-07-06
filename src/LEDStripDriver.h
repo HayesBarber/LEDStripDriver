@@ -36,6 +36,8 @@ private:
     uint8_t _brightness;
     uint32_t _updateInterval;
 
+    String _lastColors;
+
     FillJob _fillJob;
 };
 
