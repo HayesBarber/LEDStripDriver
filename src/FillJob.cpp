@@ -51,7 +51,8 @@ void FillJob::applyStep(CRGB* leds, uint32_t updateInterval) {
     FastLED.show();
 
     _currentPixel++;
-    if (_currentPixel >= (_currentColorIdx + 1) * _pixelsPerColor) {
+    if (_currentPixel >= (_currentColorIdx + 1) * _pixelsPerColor && _currentColorIdx < _numColors - 1)
+    {
         _currentColorIdx++;
     }
 
