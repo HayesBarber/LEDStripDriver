@@ -7,7 +7,7 @@
 
 class LEDStripDriver {
 public:
-    LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval);
+    LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval = 20);
 
     template<uint8_t DATA_PIN>
     void init() {
