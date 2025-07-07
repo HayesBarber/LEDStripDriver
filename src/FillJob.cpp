@@ -24,6 +24,7 @@ void FillJob::begin(String colorString, uint16_t numPixels) {
     }
 
     _colors = new CRGB[_numColors];
+    _pixelsPerColor = _numPixels / _numColors;
 
     String current = "";
     uint8_t index = 0;
@@ -39,8 +40,6 @@ void FillJob::begin(String colorString, uint16_t numPixels) {
     if (!current.isEmpty()) {
         _colors[index] = _parseColor(current);
     }
-
-    _pixelsPerColor = _numPixels / _numColors;
 }
 
 void FillJob::applyStep(CRGB* leds, uint32_t updateInterval) {
