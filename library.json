@@ -1,0 +1,18 @@
+{
+  "name": "LEDStripDriver",
+  "version": "0.1.0",
+  "description": "LED Strip Driver",
+  "frameworks": "arduino",
+  "license": "MIT",
+  "platforms": "espressif32",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HayesBarber/LEDStripDriver.git"
+  },
+  "dependencies": [
+    {
+      "name": "FastLED",
+      "version": "^3.10.1"
+    }
+  ]
+}
