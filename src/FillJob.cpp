@@ -9,10 +9,13 @@ FillJob::~FillJob() {
     delete[] _colors;
 }
 
-void FillJob::begin(String colorString, uint16_t numPixels) {
+void FillJob::setNumPixels(uint16_t numPixels) {
+    _numPixels = numPixels;
+}
+
+void FillJob::begin(String colorString) {
     delete[] _colors;
 
-    _numPixels = numPixels;
     _currentPixel = 0;
     _currentColorIdx = 0;
     _lastUpdate = millis();

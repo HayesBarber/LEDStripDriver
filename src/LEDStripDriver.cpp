@@ -8,6 +8,7 @@ LEDStripDriver::LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t 
       _lastColors("")
 {
     _leds = new CRGB[_numPixels];
+    _fillJob.setNumPixels(_numPixels);
 }
 
 void LEDStripDriver::toggle() {
@@ -36,7 +37,7 @@ void LEDStripDriver::fill(String colors) {
         _lastColors = colors;
     }
 
-    _fillJob.begin(colors, _numPixels);
+    _fillJob.begin(colors);
 }
 
 void LEDStripDriver::update() {
