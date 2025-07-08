@@ -40,7 +40,7 @@ void LEDStripDriver::fill(String colors) {
     _fillJob.begin(colors);
 }
 
-void LEDStripDriver::update() {
+void LEDStripDriver::loop() {
     _fillJob.applyStep(_leds, _updateInterval);
 }
 

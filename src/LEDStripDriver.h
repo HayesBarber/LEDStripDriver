@@ -26,7 +26,7 @@ public:
     void toggle();
     void fill(String colors);
     bool getPowerState();
-    void update();
+    void loop();
     String getCurrentColors() const;
 
 private:
