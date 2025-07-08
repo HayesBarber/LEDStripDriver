@@ -16,8 +16,9 @@ public:
     ~FillJob();
 
     void begin(String colorString);
-    void applyStep(CRGB* leds, uint32_t updateInterval);
+    void applyStep(CRGB* leds);
     void setNumPixels(uint16_t numPixels);
+    void setUpdateInterval(uint32_t updateInterval);
 
 private:
     CRGB* _colors;
@@ -27,6 +28,7 @@ private:
     uint16_t _currentPixel;
     uint8_t _currentColorIdx;
 
+    uint32_t _updateInterval;
     uint16_t _numPixels;
     bool _inProgress;
     unsigned long _lastUpdate;

@@ -1,14 +1,13 @@
 #include "LEDStripDriver.h"
 
 LEDStripDriver::LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval)
-    : _numPixels(numPixels),
-      _brightness(brightness),
-      _updateInterval(updateInterval),
+    : _brightness(brightness),
       _isOn(false),
       _lastColors("")
 {
-    _leds = new CRGB[_numPixels];
-    _fillJob.setNumPixels(_numPixels);
+    _leds = new CRGB[numPixels];
+    _fillJob.setNumPixels(numPixels);
+    _fillJob.setUpdateInterval(updateInterval);
 }
 
 void LEDStripDriver::toggle() {
@@ -41,7 +40,7 @@ void LEDStripDriver::fill(String colors) {
 }
 
 void LEDStripDriver::loop() {
-    _fillJob.applyStep(_leds, _updateInterval);
+    _fillJob.applyStep(_leds);
 }
 
 bool LEDStripDriver::getPowerState() {

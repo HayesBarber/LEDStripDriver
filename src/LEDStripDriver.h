@@ -78,13 +78,8 @@ public:
 private:
     CRGB* _leds;
     bool _isOn;
-
-    uint16_t _numPixels;
     uint8_t _brightness;
-    uint32_t _updateInterval;
-
     String _lastColors;
-
     FillJob _fillJob;
 };
 
