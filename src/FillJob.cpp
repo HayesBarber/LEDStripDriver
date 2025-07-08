@@ -57,8 +57,7 @@ void FillJob::applyStep(CRGB* leds) {
     FastLED.show();
 
     _currentPixel++;
-    if (_currentPixel >= (_currentColorIdx + 1) * _pixelsPerColor && _currentColorIdx < _numColors - 1)
-    {
+    if (_currentPixel >= (_currentColorIdx + 1) * _pixelsPerColor && _currentColorIdx < _numColors - 1) {
         _currentColorIdx++;
     }
 
