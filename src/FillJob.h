@@ -4,6 +4,12 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
+/**
+ * @brief Internal class used by LEDStripDriver to perform progressive fills.
+ * 
+ * This class is not intended for external use.
+ * Its API may change without notice.
+ */
 class FillJob {
 public:
     FillJob();
