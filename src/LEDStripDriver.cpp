@@ -5,6 +5,10 @@ LEDStripDriver::LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t 
       _isOn(false),
       _lastColors("")
 {
+    if (numPixels == 0) numPixels = 1;
+    if (brightness > 255) brightness = 255;
+    if (brightness < 0) brightness = 0;
+
     _leds = new CRGB[numPixels];
     _fillJob.setNumPixels(numPixels);
     _fillJob.setUpdateInterval(updateInterval);
