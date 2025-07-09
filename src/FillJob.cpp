@@ -13,6 +13,10 @@ void FillJob::setNumPixels(uint16_t numPixels) {
     _numPixels = numPixels;
 }
 
+void FillJob::setUpdateInterval(uint32_t updateInterval) {
+    _updateInterval = updateInterval;
+}
+
 void FillJob::begin(String colorString) {
     delete[] _colors;
 
@@ -45,16 +49,15 @@ void FillJob::begin(String colorString) {
     }
 }
 
-void FillJob::applyStep(CRGB* leds, uint32_t updateInterval) {
+void FillJob::applyStep(CRGB* leds) {
     if (!_inProgress) return;
-    if (millis() - _lastUpdate < updateInterval) return;
+    if (millis() - _lastUpdate < _updateInterval) return;
 
     leds[_currentPixel] = _colors[_currentColorIdx];
     FastLED.show();
 
     _currentPixel++;
-    if (_currentPixel >= (_currentColorIdx + 1) * _pixelsPerColor && _currentColorIdx < _numColors - 1)
-    {
+    if (_currentPixel >= (_currentColorIdx + 1) * _pixelsPerColor && _currentColorIdx < _numColors - 1) {
         _currentColorIdx++;
     }
 
