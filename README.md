@@ -17,10 +17,10 @@ A lightweight, Arduino-compatible C++ library for controlling addressable LED st
 const uint16_t NUM_PIXELS = 60;
 const uint8_t BRIGHTNESS = 64;
 
-LEDStripDriver strip(NUM_PIXELS, BRIGHTNESS);
+LEDStripDriver strip;
 
 void setup() {
-    strip.init<5>(); // Set your actual data pin
+    strip.init<5>(NUM_PIXELS, BRIGHTNESS); // Set your actual data pin
     strip.fill("FF0000,00FF00,0000FF");
 }
 
