@@ -13,7 +13,7 @@ public:
     LEDStripDriver();
 
     /**
-     * @brief Initializes the LED strip with specified parameters and hardware pin.
+     * @brief Initializes the LED strip with specified parameters and data pin.
      * 
      * @tparam DATA_PIN GPIO pin connected to the LED strip.
      * @param numPixels Number of pixels in the strip. Minimum enforced is 1.
