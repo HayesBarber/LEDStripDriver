@@ -9,24 +9,31 @@ class LEDStripDriver {
 public:
     /**
      * @brief Constructs a new LEDStripDriver instance.
-     * 
-     * @param numPixels Number of pixels in the LED strip.
-     * @param brightness Brightness level (0–255).
-     * @param updateInterval Interval between color updates in milliseconds.
      */
-    LEDStripDriver(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval = 20);
+    LEDStripDriver();
 
     /**
-     * @brief Initializes the LED strip using the specified data pin.
+     * @brief Initializes the LED strip with specified parameters and data pin.
      * 
      * @tparam DATA_PIN GPIO pin connected to the LED strip.
+     * @param numPixels Number of pixels in the strip. Minimum enforced is 1.
+     * @param brightness Brightness level (0–255).
+     * @param updateInterval Delay between progressive fill steps in milliseconds.
      */
     template<uint8_t DATA_PIN>
-    void init() {
-        FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, _numPixels);
-        FastLED.setBrightness(_brightness);
+    void init(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval = 20) {
+        if (numPixels <= 0) numPixels = 1;
+        if (brightness > 255) brightness = 255;
+        if (brightness < 0) brightness = 0;
 
-        for (int i = 0; i < _numPixels; i++) {
+        _leds = new CRGB[numPixels];
+        _fillJob.setNumPixels(numPixels);
+        _fillJob.setUpdateInterval(updateInterval);
+
+        FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, numPixels);
+        FastLED.setBrightness(brightness);
+
+        for (int i = 0; i < numPixels; i++) {
             _leds[i] = CRGB::Black;
         }
 
@@ -78,7 +85,6 @@ public:
 private:
     CRGB* _leds;
     bool _isOn;
-    uint8_t _brightness;
     String _lastColors;
     FillJob _fillJob;
 };
