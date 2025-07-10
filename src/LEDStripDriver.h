@@ -9,17 +9,16 @@ class LEDStripDriver {
 public:
     /**
      * @brief Constructs a new LEDStripDriver instance.
-     * 
-     * @param numPixels Number of pixels in the LED strip.
-     * @param brightness Brightness level (0–255).
-     * @param updateInterval Interval between color updates in milliseconds.
      */
     LEDStripDriver();
 
     /**
-     * @brief Initializes the LED strip using the specified data pin.
+     * @brief Initializes the LED strip with specified parameters and hardware pin.
      * 
      * @tparam DATA_PIN GPIO pin connected to the LED strip.
+     * @param numPixels Number of pixels in the strip. Minimum enforced is 1.
+     * @param brightness Brightness level (0–255).
+     * @param updateInterval Delay between progressive fill steps in milliseconds.
      */
     template<uint8_t DATA_PIN>
     void init(uint16_t numPixels, uint8_t brightness, uint32_t updateInterval = 20) {
