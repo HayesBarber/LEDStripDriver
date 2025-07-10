@@ -11,7 +11,7 @@
   },
   "dependencies": [
     {
-      "name": "FastLED",
+      "name": "FastLED/FastLED",
       "version": "^3.10.1"
     }
   ]
