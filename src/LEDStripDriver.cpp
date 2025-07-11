@@ -29,6 +29,7 @@ void LEDStripDriver::fill(String colors) {
 
     if (turningOn) {
         _lastColors = colors;
+        persistLastColors();
     }
 
     _fillJob.begin(colors);
