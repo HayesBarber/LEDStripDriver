@@ -1,4 +1,5 @@
 #include "LEDStripDriver.h"
+#include <MicroStorage.h>
 
 LEDStripDriver::LEDStripDriver()
     : _isOn(false),
@@ -43,4 +44,10 @@ bool LEDStripDriver::getPowerState() {
 
 String LEDStripDriver::getCurrentColors() const {
     return _isOn ? _lastColors : "000000";
+}
+
+void LEDStripDriver::persistLastColors() {
+    MicroStorage::set("LED",
+        StringEntry("lastColors", _lastColors)
+    );
 }

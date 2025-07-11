@@ -87,6 +87,8 @@ private:
     bool _isOn;
     String _lastColors;
     FillJob _fillJob;
+
+    void persistLastColors();
 };
 
 #endif
