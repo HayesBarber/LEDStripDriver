@@ -3,7 +3,7 @@
 
 LEDStripDriver::LEDStripDriver()
     : _isOn(false),
-      _lastColors("") {}
+      _lastColors(getLastColorsFromStorage()) {}
 
 void LEDStripDriver::toggle() {
     _isOn ? off() : on();
