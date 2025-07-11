@@ -13,6 +13,10 @@
     {
       "name": "FastLED",
       "version": "fastled/FastLED@3.10.1"
+    },
+    {
+      "name": "MicroStorage",
+      "version": "https://github.com/HayesBarber/MicroStorage.git#main"
     }
   ]
 }

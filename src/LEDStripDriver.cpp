@@ -1,8 +1,9 @@
 #include "LEDStripDriver.h"
+#include <MicroStorage.h>
 
 LEDStripDriver::LEDStripDriver()
     : _isOn(false),
-      _lastColors("") {}
+      _lastColors(getLastColorsFromStorage()) {}
 
 void LEDStripDriver::toggle() {
     _isOn ? off() : on();
@@ -28,6 +29,7 @@ void LEDStripDriver::fill(String colors) {
 
     if (turningOn) {
         _lastColors = colors;
+        persistLastColors();
     }
 
     _fillJob.begin(colors);
@@ -43,4 +45,18 @@ bool LEDStripDriver::getPowerState() {
 
 String LEDStripDriver::getCurrentColors() const {
     return _isOn ? _lastColors : "000000";
+}
+
+void LEDStripDriver::persistLastColors() {
+    MicroStorage::set("LED",
+        StringEntry("lastColors", _lastColors)
+    );
+}
+
+String LEDStripDriver::getLastColorsFromStorage() {
+    auto [value] = MicroStorage::get("LED",
+        StringEntry("lastColors", "")
+    );
+
+    return value;
 }

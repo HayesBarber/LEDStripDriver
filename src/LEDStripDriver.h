@@ -1,5 +1,4 @@
-#ifndef LED_STRIP_DRIVER_H
-#define LED_STRIP_DRIVER_H
+#pragma once
 
 #include <Arduino.h>
 #include <FastLED.h>
@@ -87,6 +86,7 @@ private:
     bool _isOn;
     String _lastColors;
     FillJob _fillJob;
-};
 
-#endif
+    void persistLastColors();
+    String getLastColorsFromStorage();
+};
