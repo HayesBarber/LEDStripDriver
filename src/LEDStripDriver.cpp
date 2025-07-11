@@ -51,3 +51,11 @@ void LEDStripDriver::persistLastColors() {
         StringEntry("lastColors", _lastColors)
     );
 }
+
+String LEDStripDriver::getLastColorsFromStorage() {
+    auto [value] = MicroStorage::get("LED",
+        StringEntry("lastColors", "")
+    );
+
+    return value;
+}

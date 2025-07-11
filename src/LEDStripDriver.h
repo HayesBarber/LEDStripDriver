@@ -89,6 +89,7 @@ private:
     FillJob _fillJob;
 
     void persistLastColors();
+    String getLastColorsFromStorage();
 };
 
 #endif
