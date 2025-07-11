@@ -1,5 +1,4 @@
-#ifndef LED_STRIP_DRIVER_H
-#define LED_STRIP_DRIVER_H
+#pragma once
 
 #include <Arduino.h>
 #include <FastLED.h>
@@ -91,5 +90,3 @@ private:
     void persistLastColors();
     String getLastColorsFromStorage();
 };
-
-#endif
