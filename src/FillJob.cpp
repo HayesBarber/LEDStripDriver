@@ -23,7 +23,6 @@ void FillJob::begin(String colorString) {
     _currentPixel = 0;
     _currentColorIdx = 0;
     _lastUpdate = millis();
-    _inProgress = true;
 
     _numColors = 1;
     for (char c : colorString) {
@@ -47,6 +46,8 @@ void FillJob::begin(String colorString) {
     if (!current.isEmpty()) {
         _colors[index] = _parseColor(current);
     }
+
+    _inProgress = true;
 }
 
 void FillJob::applyStep(CRGB* leds) {
