@@ -39,7 +39,7 @@ void LEDStripDriver::loop() {
     _fillJob.applyStep(_leds);
 }
 
-bool LEDStripDriver::getPowerState() {
+bool LEDStripDriver::getPowerState() const {
     return _isOn;
 }
 

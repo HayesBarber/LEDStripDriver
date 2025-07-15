@@ -66,7 +66,7 @@ public:
      * 
      * @return true if the strip is on, false otherwise.
      */
-    bool getPowerState();
+    bool getPowerState() const;
 
     /**
      * @brief Performs a step in the progressive fill animation.
