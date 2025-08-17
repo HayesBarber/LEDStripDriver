@@ -1,8 +1,7 @@
 #include "LEDStripDriver.h"
 #include <MicroStorage.h>
 
-LEDStripDriver::LEDStripDriver()
-    : _isOn(false), _lastColors(getLastColorsFromStorage()) {}
+LEDStripDriver::LEDStripDriver() : _isOn(false), _lastColors("") {}
 
 void LEDStripDriver::toggle() { _isOn ? off() : on(); }
 

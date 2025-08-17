@@ -32,6 +32,7 @@ public:
     _leds = new CRGB[numPixels];
     _fillJob.setNumPixels(numPixels);
     _fillJob.setUpdateInterval(updateInterval);
+    _lastColors = getLastColorsFromStorage();
 
     FastLED.addLeds<NEOPIXEL, DATA_PIN>(_leds, numPixels);
     FastLED.setBrightness(brightness);
